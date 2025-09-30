@@ -1,4 +1,4 @@
-// ===== Exercice 1 – Variables et portée =====
+//Exercice 1 – Variables et portée
 console.log("=== Exercice 1 : Variables et portée ===");
 
 var x = "var globale";
@@ -21,7 +21,7 @@ try {
   console.log("Réaffecter une const déclenche une erreur :", e.message);
 }
 
-// ===== Exercice 2 – Fonctions fléchées =====
+//Exercice 2 – Fonctions fléchées
 console.log("\n=== Exercice 2 : Fonctions fléchées ===");
 
 function sommeClassique(a, b) {
@@ -33,14 +33,14 @@ console.log("Somme classique 3+4 =", sommeClassique(3,4));
 const sommeFlechee = (a, b) => a + b; // return implicite
 console.log("Somme fléchée 3+4 =", sommeFlechee(3,4));
 
-// ===== Exercice 3 – Destructuring =====
+//Exercice 3 – Destructuring 
 console.log("\n=== Exercice 3 : Destructuring ===");
 
 const user = { name: "Noor", age: 10, city: "Tunis" };
 const { name, age } = user;
 console.log(`Nom : ${name}, Âge : ${age}`);
 
-// ===== Exercice 4 – Spread Operator =====
+//  Exercice 4 – Spread Operator 
 console.log("\n=== Exercice 4 : Spread Operator ===");
 
 const tab1 = [1,2,3];
@@ -54,7 +54,7 @@ copie.b = 99; // modification d'une valeur
 console.log("Objet original :", obj1);
 console.log("Copie modifiée :", copie);
 
-// ===== Partie 2 : Objets, Classes, Tableaux =====
+//  Partie 2 : Objets, Classes, Tableaux 
 console.log("\n=== Partie 2 : Objets, Classes, Tableaux ===");
 
 // Exercice 5 – Objet simple
@@ -105,3 +105,40 @@ console.log("Exercice 7 - Tri décroissant :", notesDecroissantes);
 // 3. Filtrer notes >= 10
 const notesSup10 = notes.filter(n => n >= 10);
 console.log("Exercice 7 - Notes >= 10 :", notesSup10);
+
+//Exercice 8 : Promesse simple 
+const wait = ms => new Promise(res => setTimeout(res, ms));
+
+async function simulateDownload() {
+    const output = document.getElementById('exo8');
+    output.textContent = "Début du téléchargement…";
+    await wait(2000); // attendre 2 secondes
+    output.textContent += "\nFin du téléchargement !";
+}
+
+simulateDownload();
+
+
+// Exercice 9 : Fetch + async/await
+async function loadPosts() {
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+        const data = await response.json();
+
+        // On prend les 5 premiers titres
+        const firstFive = data.slice(0, 5);
+        const list = document.getElementById('postList');
+        list.innerHTML = ""; 
+
+        firstFive.forEach(post => {
+            const li = document.createElement('li');
+            li.textContent = post.title;
+            list.appendChild(li);
+        });
+
+    } catch (error) {
+        console.error("Erreur lors du fetch :", error);
+    }
+}
+
+document.getElementById('loadPosts').addEventListener('click', loadPosts);
