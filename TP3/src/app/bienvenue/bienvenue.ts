@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './bienvenue.css'
 })
 export class Bienvenue {
-  message: string = "Bienvenue sur notre site !";
+  message: string = "Bienvenue !";
 }

@@ -5,8 +5,8 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-utilisateur',
   imports: [FormsModule,CommonModule],
-  templateUrl: './utilisateur.html',
-  styleUrl: './utilisateur.css'
+  templateUrl: './utilisateur.html'
+  
 })
 export class Utilisateur {
    nom: string = '';
