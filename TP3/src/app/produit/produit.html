@@ -1,0 +1,50 @@
+<div class="produit-card" [class.en-stock]="enStock" [class.hors-stock]="!enStock">
+  <!-- En-tête du produit -->
+  <div class="produit-header">
+    <h3 class="produit-titre">{{ nomProduit }}</h3>
+    <span class="badge" [style.background]="getCouleurStatut()">
+      {{ getStatutStock() }}
+    </span>
+  </div>
+
+  <!-- Image du produit -->
+  <div class="image-container">
+    <img 
+      [src]="imageUrl" 
+      [alt]="nomProduit" 
+      class="produit-image"
+      [style.filter]="!enStock ? 'grayscale(100%)' : 'none'"
+      (error)="imageUrl = 'assets/images/placeholder.jpg'">
+  </div>
+
+  <!-- Description et prix -->
+  <div class="produit-info">
+    <p class="produit-description">{{ description }}</p>
+    <div class="prix-section">
+      <span class="prix">{{ prix | currency:'EUR':'symbol':'1.2-2' }}</span>
+      <span class="tva">TVA incluse</span>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div class="produit-actions">
+    <button 
+      class="btn btn-primary" 
+      (click)="ajouterAuPanier()" 
+      [disabled]="!enStock"
+      [class.disabled]="!enStock">
+      <span class="btn-icon">🛒</span>
+      Ajouter au panier
+    </button>
+    
+    <button 
+      class="btn btn-secondary" 
+      (click)="basculerStock()">
+      <span class="btn-icon">🔄</span>
+      Basculer stock
+    </button>
+  </div>
+
+  <!-- Indicateur visuel -->
+  <div class="stock-indicator" [style.background]="getCouleurStatut()"></div>
+</div>

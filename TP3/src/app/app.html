@@ -1,0 +1,50 @@
+<div class="app-container">
+      
+      <!-- Activité 1 -->
+      <app-bienvenue></app-bienvenue>
+      
+      <!-- Activité 4 -->
+      <app-utilisateur></app-utilisateur>
+      
+      <!-- Activité 6 & 7 -->
+       <h2>Nos Produits</h2> 
+      <div class="produits-section">
+        
+        <app-produit 
+          nomProduit="Ordinateur Portable" 
+          imageUrl="assets/laptop.jpg"
+          [prix]="899.99"
+          description="Ordinateur portable haute performance"
+          (produitAjoute)="onProduitAjoute($event)">
+        </app-produit>
+        
+        <app-produit 
+          nomProduit="Smartphone" 
+           imageUrl="assets/smartphone.jpg"
+          [prix]="699.99"
+          (produitAjoute)="onProduitAjoute($event)">
+        </app-produit>
+        
+        <app-produit id="c"
+          nomProduit="Casque Audio" 
+           imageUrl="assets/casque.jpg"
+          [prix]="199.99"
+          (produitAjoute)="onProduitAjoute($event)">
+        </app-produit>
+<!--
+        <app-produit id="s"
+          nomProduit="Souris Gaming" 
+            imageUrl="assets/souris.jpg"
+          [prix]="79.99"
+          description="Souris gaming RGB 16000 DPI avec 8 boutons programmables"
+          (produitAjoute)="onProduitAjoute($event)">
+        </app-produit>
+-->  
+      </div>
+     
+      <!-- Activité 6 -->
+      <app-panier 
+        [nombreArticles]="articlesPanier.length"
+        [articles]="articlesPanier">
+  </app-panier>
+</div>

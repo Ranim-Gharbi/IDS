@@ -1,0 +1,17 @@
+<div class="panier">
+  <h3>🛒 Panier d'achat</h3>
+  <p>Nombre d'articles : {{ nombreArticles }}</p>
+  
+  <div *ngIf="articles && articles.length > 0; else panierVide">
+    <h4>Articles dans le panier :</h4>
+    <ul>
+      <li *ngFor="let article of articles; let i = index">
+        {{ i + 1 }}. {{ article }}
+      </li>
+    </ul>
+  </div>
+  
+  <ng-template #panierVide>
+    <p class="panier-vide">Votre panier est vide</p>
+  </ng-template>
+</div>

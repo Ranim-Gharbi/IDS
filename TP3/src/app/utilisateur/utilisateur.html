@@ -1,0 +1,18 @@
+<h2> Utilisateur</h2>
+<div class="utilisateur-container">
+  
+  <div class="input-section">
+    <label for="nomInput">Entrez votre nom :</label>
+    <input 
+      id="nomInput"
+      type="text" 
+      [(ngModel)]="nom" 
+      placeholder="Votre nom ici..."
+      class="nom-input">
+  </div>
+
+  <div class="affichage-section">
+    <div class="valeur-affichage" [class.vide]="!nom">
+      {{ nom || ' ' }}
+    </div>
+ </div>    
